@@ -54,7 +54,7 @@ def arithmetic_arranger(problems, show_result=False):
     for i in range(0, len(operators)):
         arranged_problems += operators[i] + " "
         arranged_problems += str.rjust(operand2[i], biggerLength[i])
-        if c <= len(operators):
+        if c != len(operators)-1:
             c += 1
             arranged_problems += "    "
     arranged_problems += "\n"
@@ -67,19 +67,23 @@ def arithmetic_arranger(problems, show_result=False):
         for k in range(0, biggerLength[j]):
             s += '-'
         arranged_problems += s
-        if c <= len(operators):
+        if c != len(operators)-1:
             c += 1
             arranged_problems += "    "
         j += 1
     if show_result:
         arranged_problems += "\n"
         j = 0
+        c = 0
         for i in result:
             #arranged_problems += "  "
-            arranged_problems += str.rjust(str(i), biggerLength[j]+2) + "    "
+            arranged_problems += str.rjust(str(i), biggerLength[j]+2)
+            if c != len(operators) - 1:
+                c += 1
+                arranged_problems += "    "
             j += 1
 
     return arranged_problems
 
 
-print(arithmetic_arranger(['32 - 698', '1 - 3801', '45 + 43', '123 + 49', '988 + 40'], True))
+print(arithmetic_arranger(['3 + 855', '988 + 40'], True))
